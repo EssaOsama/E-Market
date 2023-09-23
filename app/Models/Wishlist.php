@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Wishlist extends Model
 {
     use HasFactory;
+
     protected $guarded = [];
 
-    public function category()
+    public function product()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Product::class);
     }
-
-    public function wishlists()
+    
+    public function user()
     {
-        return $this->hasMany(Wishlist::class);
+        return $this->belongsTo(User::class);
     }
-
 }

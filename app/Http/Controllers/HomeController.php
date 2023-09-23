@@ -18,12 +18,11 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-
     public function index()
     {
         return view('home');
     }
-    
+
     public function ecommerce()
     {
         return view('ecommerce');
@@ -32,15 +31,17 @@ class HomeController extends Controller
     {
         $categories = Category::get(['name', 'id']);
         $products = Product::paginate(9);
-        return view('shop',compact('categories' ,'products'));
+        return view('shop', compact('categories', 'products'));
     }
     public function details()
     {
         return view('details');
     }
-    public function wishlist()
+    public function wishlist(Request $request)
     {
-        return view('wishlist');
+        $user = $request->user();
+        $wishlistItems = $user->wishlists;
+        return view('wishlist', compact('wishlistItems'));
     }
     public function checkout()
     {

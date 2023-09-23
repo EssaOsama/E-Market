@@ -36,18 +36,13 @@ class PermissionSeeder extends Seeder
             ['id' => 14, 'name' => 'store users', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
             ['id' => 15, 'name' => 'update users', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
             ['id' => 16, 'name' => 'delete users', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
-            
-            ['id' => 17, 'name' => 'index category', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
-            ['id' => 18, 'name' => 'store category', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
-            ['id' => 19, 'name' => 'update category', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
-            ['id' => 20, 'name' => 'delete category', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
-          
-            ['id' => 21, 'name' => 'index product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
-            ['id' => 22, 'name' => 'store product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
-            ['id' => 23, 'name' => 'update product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
-            ['id' => 24, 'name' => 'delete product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
-           
-            ['id' => 25, 'name' => 'admin', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
+
+            ['id' => 17, 'name' => 'index product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
+            ['id' => 18, 'name' => 'store product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:13:47', 'updated_at' => '2023-05-23 14:13:47'],
+            ['id' => 19, 'name' => 'update product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
+            ['id' => 20, 'name' => 'delete product', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
+
+            ['id' => 100, 'name' => 'admin', 'guard_name' => 'web', 'created_at' => '2023-05-23 14:22:11', 'updated_at' => '2023-05-23 14:22:11'],
 
         ];
 

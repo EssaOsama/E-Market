@@ -31,29 +31,17 @@
                 <div class="content-header-left col-md-9 col-12 mb-2">
                     <div class="row breadcrumbs-top">
                         <div class="col-12">
-                            <h2 class="content-header-title float-left mb-0">Shop</h2>
+                            <h2 class="content-header-title float-left mb-0">{{ __('shop') }}</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
+                                    <li class="breadcrumb-item"><a href="index.html">{{ __('Home') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item"><a href="#">eCommerce</a>
+                                    <li class="breadcrumb-item"><a href="#">{{ __('eCommerce') }}</a>
                                     </li>
-                                    <li class="breadcrumb-item active">Shop
+                                    <li class="breadcrumb-item active">{{ __('shop') }}
                                     </li>
                                 </ol>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
-                    <div class="form-group breadcrum-right">
-                        <div class="dropdown">
-                            <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                    class="feather icon-settings"></i></button>
-                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item"
-                                    href="#">Chat</a><a class="dropdown-item" href="#">Email</a><a
-                                    class="dropdown-item" href="#">Calendar</a></div>
                         </div>
                     </div>
                 </div>
@@ -72,7 +60,7 @@
                                                     class="feather icon-menu"></i></span>
                                         </button>
                                         <div class="search-results">
-                                            16285 results found
+                                            {{ \App\Models\Product::count() . ' results found' }}
                                         </div>
                                     </div>
                                     <div class="view-options">
@@ -115,7 +103,7 @@
                     </section>
                     <!-- Ecommerce Search Bar Ends -->
 
-                    <!-- Ecommerce Products Starts -->
+                    <!-- Ecommerce Products Starts المنتجات -->
                     <section id="ecommerce-products" class="grid-view">
                         @forelse ($products as $product)
                             <div class="card ecommerce-card" data-category="{{ $product->category->name }}">
@@ -127,11 +115,11 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="item-wrapper">
-                                            {{-- <div class="item-rating">
-                                            <div class="badge badge-primary badge-md">
-                                                <span>4</span> <i class="feather icon-star"></i>
+                                            <div class="item-rating">
+                                                <div class="badge badge-primary badge-md">
+                                                    <span>{{ __(4) }}</span> <i class="feather icon-star"></i>
+                                                </div>
                                             </div>
-                                        </div> --}}
                                             <div>
                                                 <h6 class="item-price">
                                                     ${{ $product->price }}
@@ -164,12 +152,19 @@
                                         </div>
                                     </div> --}}
                                         <div class="wishlist">
-                                            <i class="fa fa-heart-o"></i> <span>Wishlist</span>
+                                            <form action="{{ route('wishlist.add', $product) }}" method="post">
+                                                @csrf
+                                                <button type="submit" style="border: none"><i class="fa fa-heart-o"></i>
+                                                    <span>{{ __('Wishlist') }}</span></button>
+                                            </form>
+
                                         </div>
                                         <div class="cart">
-                                            <i class="feather icon-shopping-cart"></i> <span class="add-to-cart">Add to
-                                                cart</span> <a href="app-ecommerce-checkout.html"
-                                                class="view-in-cart d-none">View In Cart</a>
+                                            <i class="feather icon-shopping-cart"></i> <span
+                                                class="add-to-cart">{{ __('Add to
+                                                                                                                                                cart') }}</span>
+                                            <a href="app-ecommerce-checkout.html"
+                                                class="view-in-cart d-none">{{ __('View In Cart') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -199,13 +194,13 @@
                             </div>
                         </div>
                     </section>
-                    <!-- Ecommerce Pagination Ends -->
+                    <!-- Ecommerce Pagination Ends المنتجات-->
 
                 </div>
             </div>
             <div class="sidebar-detached sidebar-left">
                 <div class="sidebar">
-                    <!-- Ecommerce Sidebar Starts -->
+                    <!-- Ecommerce Sidebar Starts التصفية-->
                     <div class="sidebar-shop" id="ecommerce-sidebar-toggler">
 
                         <div class="row">
@@ -283,7 +278,7 @@
                                 <!-- /Price Filter -->
                                 <hr>
 
-                                <!-- Categories Starts -->
+                                <!-- Categories Starts التصنيفات-->
                                 <div id="product-categories">
                                     <div class="product-category-title">
                                         <h6 class="filter-title mb-1">{{ __('Categories') }}</h6>
@@ -318,7 +313,8 @@
                                     </ul>
 
                                 </div>
-                                <!-- Categories Ends -->
+                                <!-- Categories Ends التصنيفات-->
+
                                 {{-- <hr>
                                 <!-- Brands -->
                                 <div class="brands">
@@ -537,7 +533,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Ecommerce Sidebar Ends -->
+                    <!-- Ecommerce Sidebar Ends التصفية-->
 
                 </div>
             </div>
@@ -556,10 +552,8 @@
                 var selectedCategory = $(this).data('category');
 
                 if (selectedCategory === 'all') {
-                    // Show all products when "All Categories" is selected
                     $('.ecommerce-card').show();
                 } else {
-                    // Hide all products and then show only those with the selected category
                     $('.ecommerce-card').hide();
                     $('.ecommerce-card[data-category="' + selectedCategory + '"]').show();
                 }
@@ -572,11 +566,8 @@
             $('input[name="price-range"]').change(function() {
                 var minPrice = parseFloat($(this).data('min-price'));
                 var maxPrice = parseFloat($(this).data('max-price'));
-
-                // Hide all products
                 $('.ecommerce-card').hide();
 
-                // Show products within the selected price range
                 $('.ecommerce-card').each(function() {
                     var productPrice = parseFloat($(this).find('.item-price').text().replace('$',
                         ''));

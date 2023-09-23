@@ -54,12 +54,12 @@ class ProductController extends Controller
         }
 
         $product->update($validatedData);
-        return redirect()->back()->with('success', __('saved successfully'));
+        return redirect()->back()->with('success', __('updated successfully'));
     }
 
     public function destroy($id)
     {
         $products = Product::destroy($id);
-        return redirect()->back()->with('success', __('saved successfully'));
+        return redirect()->back()->with('success', __('deleted successfully'));
     }
 }
