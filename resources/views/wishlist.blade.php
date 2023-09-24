@@ -81,18 +81,16 @@
                                     </div>
                                 </div>
                                 <div class="item-options text-center">
-                                    <div class="wishlist remove-wishlist">
                                         <form action="{{ route('wishlist.destroy', $item) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button style="border: none" type="submit"
+                                            <button style="border: none; height:100%;" type="submit"
                                                 onclick="return confirm('{{ __('Are You Sure ???') }}')">
                                                 <i class="feather icon-x align-middle"></i>
                                                 {{ __('Remove from Wishlist') }}
                                             </button>
                                         </form>
-                                    </div>
                                     <div class="cart move-cart">
                                         <i class="feather icon-shopping-cart"></i> <span class="add-to-cart">Move to
                                             cart</span>
